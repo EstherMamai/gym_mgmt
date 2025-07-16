@@ -145,29 +145,36 @@ doc_events = {
 	# }
     "Gym Membership": {
         "before_save": "gym_mgmt.services.rest.update_membership_status"
+    },
+    "Gym Trainer Subscription": {
+        "before_save": "gym_mgmt.services.rest.update_membership_status"
     }
+    # "Gym Locker Booking": {
+    #     "before_save": "gym_mgmt.services.rest.update_locker_booking_status"
+    # }
 }
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"gym_mgmt.tasks.all"
-# 	],
-# 	"daily": [
-# 		"gym_mgmt.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"gym_mgmt.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"gym_mgmt.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"gym_mgmt.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"gym_mgmt.tasks.all"
+	# ],
+	"daily": [
+		"gym_mgmt.service.rest.update_locker_booking_status",
+        "gym_mgmt.service.rest.update_class_booking_status"
+	]
+	# "hourly": [
+	# 	"gym_mgmt.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"gym_mgmt.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"gym_mgmt.tasks.monthly"
+	# ],
+}
 
 # Testing
 # -------
