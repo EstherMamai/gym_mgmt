@@ -83,7 +83,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-07-16 16:20:49.772984",
+ "modified": "2025-07-17 14:49:31.461835",
  "modified_by": "Administrator",
  "module": "Gym Membership Management App",
  "name": "Gym Locker Booking",
@@ -98,9 +98,21 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
+   "role": "Gym Admin",
+   "select": 1,
    "share": 1,
-   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gym Member",
+   "share": 1,
    "write": 1
   }
  ],

@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:GFL-{####}",
+ "creation": "2025-07-21 12:06:37.167323",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_oihj",
+  "gym_member",
+  "member_name",
+  "log_date",
+  "weight",
+  "calories_burned"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_oihj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "gym_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Gym Member",
+   "options": "Gym Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "gym_member.full_name",
+   "fieldname": "member_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Member Name",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "log_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Log Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight(kg)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "calories_burned",
+   "fieldtype": "Float",
+   "label": "Calories Burned(kcal)",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-21 12:19:00.451433",
+ "modified_by": "Administrator",
+ "module": "Gym Membership Management App",
+ "name": "Gym Fitness Log",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

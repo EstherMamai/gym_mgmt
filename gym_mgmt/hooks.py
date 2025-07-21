@@ -61,8 +61,15 @@ app_license = "mit"
 
 # website user home page (by Role)
 # role_home_page = {
-# 	"Role": "home_page"
+#     "Gym Member": "/member_home",
+#     "Gym Trainer": "/trainer_home"
 # }
+# app_name = "gym_mgmt"
+# website_context = {
+#     "js": ["/assets/gym_mgmt/js/login_redirect.js"]
+# }
+
+after_login = "gym_mgmt.handle_login_redirect"
 
 # Generators
 # ----------
@@ -148,6 +155,12 @@ doc_events = {
     },
     "Gym Trainer Subscription": {
         "before_save": "gym_mgmt.services.rest.update_membership_status"
+    },
+    "User": {
+        "on_update": "gym_mgmt.services.rest.create_gym_member"
+    },
+    "User": {
+        "on_update": "gym_mgmt.services.rest.create_gym_trainer"
     }
     # "Gym Locker Booking": {
     #     "before_save": "gym_mgmt.services.rest.update_locker_booking_status"
@@ -252,3 +265,29 @@ scheduler_events = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+# home"  # Default page for other rolesdef get_context(context):
+#     user = frappe.session.user
+#     if user != "Guest":
+#         roles = frappe.get_roles(user)
+#         if "Gym Member" in roles:
+#             context.home_page = "member-home"
+#         elif "Gym Admin" in roles:
+#             context.home_page = "gym-admin-dashboard"
+#         elif "Gym Trainer" in roles:
+#             context.home_page = "gym-trainer-dashboard"
+#         else:
+#             context.home_page = "
+# import frappe
+# from frappe.utils import get_url
+
+# def boot_session(bootinfo):
+#     if bootinfo.user.name != "Guest":
+#         roles = frappe.get_roles()
+#         if "Gym Member" in roles:
+#             bootinfo.home_page = "member_home"
+#         elif "Gym Admin" in roles:
+#             bootinfo.home_page = "gym_admin_dashboard"
+#         elif "Gym Trainer" in roles:
+#             bootinfo.home_page = "gym_trainer_dashboard"
+#         else:
+#             bootinfo.home_page = "home"
