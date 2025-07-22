@@ -11,7 +11,7 @@
   "member_name",
   "log_date",
   "weight",
-  "calories_burned"
+  "calories"
  ],
  "fields": [
   {
@@ -50,7 +50,7 @@
    "reqd": 1
   },
   {
-   "fieldname": "calories_burned",
+   "fieldname": "calories",
    "fieldtype": "Float",
    "label": "Calories Burned(kcal)",
    "reqd": 1
@@ -59,7 +59,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-21 12:19:00.451433",
+ "modified": "2025-07-21 14:08:27.072597",
  "modified_by": "Administrator",
  "module": "Gym Membership Management App",
  "name": "Gym Fitness Log",

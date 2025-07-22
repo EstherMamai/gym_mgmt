@@ -13,9 +13,10 @@
   "profile_photo",
   "specialization",
   "years_of_experience",
+  "section_break_oav2",
+  "user",
   "bio",
-  "active",
-  "user"
+  "active"
  ],
  "fields": [
   {
@@ -64,26 +65,29 @@
   },
   {
    "fieldname": "bio",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Bio"
   },
   {
    "default": "0",
    "fieldname": "active",
    "fieldtype": "Check",
-   "label": "Active",
-   "reqd": 1
+   "label": "Active"
   },
   {
    "fieldname": "user",
    "fieldtype": "Data",
    "label": "User"
+  },
+  {
+   "fieldname": "section_break_oav2",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-17 14:39:19.102567",
+ "modified": "2025-07-22 09:18:03.386818",
  "modified_by": "Administrator",
  "module": "Gym Membership Management App",
  "name": "Gym Trainer",

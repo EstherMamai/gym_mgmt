@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{class_name}-{###}",
+ "creation": "2025-07-22 11:50:54.703058",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_vrtk",
+  "class_name",
+  "description",
+  "capacity",
+  "location",
+  "session_type",
+  "trainers"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_vrtk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Class Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Capacity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location",
+   "reqd": 1
+  },
+  {
+   "default": "In-Person",
+   "fieldname": "session_type",
+   "fieldtype": "Select",
+   "label": "Session Type",
+   "options": "In-Person\nVirtual"
+  },
+  {
+   "fieldname": "trainers",
+   "fieldtype": "Table",
+   "label": "Trainers",
+   "options": "Gym Class Trainer"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-22 12:06:42.012771",
+ "modified_by": "Administrator",
+ "module": "Gym Membership Management App",
+ "name": "Gym Class",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

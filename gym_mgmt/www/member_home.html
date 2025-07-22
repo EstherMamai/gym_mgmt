@@ -1,103 +1,131 @@
 {% extends "templates/web.html" %}
 {% block page_content %}
 <div class="container my-5">
-    <h1>Welcome, {{ gym_member.full_name }}</h1>
-    <p><strong>Date of Birth:</strong> {{ gym_member.date_of_birth }}</p>
-    <p><strong>Phone Number:</strong> {{ gym_member.phone_number }}</p>
-    <p><strong>Email:</strong> {{ gym_member.email }}</p>
-    <h2>Your Memberships</h2>
-    {% if memberships %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Membership Type</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for membership in memberships %}
-                <tr>
-                    <td>{{ membership.membership_type }}</td>
-                    <td>{{ membership.start_date }}</td>
-                    <td>{{ membership.end_date }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    {% if message %}
+        <div class="alert alert-warning">{{ message }}</div>
     {% else %}
-        <p>No active memberships found.</p>
+        <h1>Welcome, {{ gym_member.full_name }}</h1>
+        <p><strong>Date of Birth:</strong> {{ gym_member.date_of_birth }}</p>
+        <p><strong>Phone Number:</strong> {{ gym_member.phone_number }}</p>
+        <p><strong>Email:</strong> {{ gym_member.email }}</p>
+        <h2>Your Memberships</h2>
+        {% if memberships %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Membership Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for membership in memberships %}
+                    <tr>
+                        <td>{{ membership.membership_type }}</td>
+                        <td>{{ membership.start_date }}</td>
+                        <td>{{ membership.end_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No active memberships found.</p>
+        {% endif %}
+        <h2>Your Group Class Bookings</h2>
+        {% if class_bookings %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Class Name</th>
+                        <th>Booking Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in class_bookings %}
+                    <tr>
+                        <td>{{ booking.class_name }}</td>
+                        <td>{{ booking.booking_date }}</td>
+                        <td>{{ booking.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No upcoming class bookings found.</p>
+        {% endif %}
+        <h2>Your Trainer Subscriptions</h2>
+        {% if trainer_subscriptions %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Trainer Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subscription in trainer_subscriptions %}
+                    <tr>
+                        <td>{{ subscription.trainer_name }}</td>
+                        <td>{{ subscription.start_date }}</td>
+                        <td>{{ subscription.end_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No active trainer subscriptions found.</p>
+        {% endif %}
+        <h2>Your Workout Plans</h2>
+        {% if workout_plans %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Plan Name</th>
+                        <th>Level</th>
+                        <th>Published</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plan in workout_plans %}
+                    <tr>
+                        <td>{{ plan.plan_name }}</td>
+                        <td>{{ plan.level }}</td>
+                        <td>{{ "Yes" if plan.published else "No" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No workout plans assigned.</p>
+        {% endif %}
+        <h2>Your Fitness Logs</h2>
+        {% if fitness_logs %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Log Date</th>
+                        <th>Weight (kg)</th>
+                        <th>Calories Burned (kcal)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in fitness_logs %}
+                    <tr>
+                        <td>{{ log.log_date }}</td>
+                        <td>{{ log.weight }}</td>
+                        <td>{{ log.calories or "N/A" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No fitness logs found.</p>
+        {% endif %}
+        <a href="/book-class" class="btn btn-primary">Book a Group Class</a>
+        <a href="/subscribe-trainer" class="btn btn-primary">Subscribe to a Trainer</a>
+        <a href="/log-fitness" class="btn btn-primary">Log Fitness Data</a>
     {% endif %}
-    <h2>Your Group Class Bookings</h2>
-    {% if class_bookings %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Class Name</th>
-                    <th>Booking Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for booking in class_bookings %}
-                <tr>
-                    <td>{{ booking.class_name }}</td>
-                    <td>{{ booking.booking_date }}</td>
-                    <td>{{ booking.status }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No upcoming class bookings found.</p>
-    {% endif %}
-    <h2>Your Trainer Subscriptions</h2>
-    {% if trainer_subscriptions %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Trainer Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for subscription in trainer_subscriptions %}
-                <tr>
-                    <td>{{ subscription.trainer_name }}</td>
-                    <td>{{ subscription.start_date }}</td>
-                    <td>{{ subscription.end_date }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No active trainer subscriptions found.</p>
-    {% endif %}
-    <h2>Your Workout Plans</h2>
-    {% if workout_plans %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Plan Name</th>
-                    <th>Level</th>
-                    <th>Published</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for plan in workout_plans %}
-                <tr>
-                    <td>{{ plan.plan_name }}</td>
-                    <td>{{ plan.level }}</td>
-                    <td>{{ "Yes" if plan.published else "No" }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No workout plans assigned.</p>
-    {% endif %}
-    <a href="/book-class" class="btn btn-primary">Book a Group Class</a>
-    <a href="/subscribe-trainer" class="btn btn-primary">Subscribe to a Trainer</a>
 </div>
 {% endblock %}

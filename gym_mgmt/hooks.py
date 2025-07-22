@@ -69,7 +69,7 @@ app_license = "mit"
 #     "js": ["/assets/gym_mgmt/js/login_redirect.js"]
 # }
 
-after_login = "gym_mgmt.handle_login_redirect"
+# Safter_login = "gym_mgmt.handle_login_redirect"
 
 # Generators
 # ----------
@@ -157,11 +157,27 @@ doc_events = {
         "before_save": "gym_mgmt.services.rest.update_membership_status"
     },
     "User": {
-        "on_update": "gym_mgmt.services.rest.create_gym_member"
-    },
-    "User": {
-        "on_update": "gym_mgmt.services.rest.create_gym_trainer"
+        "after_insert": [
+            "gym_mgmt.services.rest.create_gym_member",
+            "gym_mgmt.services.rest.create_gym_trainer"
+        ],
+        "on_update": [
+            "gym_mgmt.services.rest.create_gym_member",
+            "gym_mgmt.services.rest.create_gym_trainer"
+        ]
     }
+    # "User": {
+    #     "on_update": "gym_mgmt.services.rest.create_gym_member"
+    # },
+    # "User": {
+    #     "after_insert": "gym_mgmt.services.rest.create_gym_member"
+	# },
+    # "User": {
+    #     "on_update": "gym_mgmt.services.rest.create_gym_trainer"
+    # },
+    # "User":{
+    #     "after_insert": "gym_mgmt.services.rest.create_gym_trainer"
+	# }
     # "Gym Locker Booking": {
     #     "before_save": "gym_mgmt.services.rest.update_locker_booking_status"
     # }
@@ -291,3 +307,9 @@ scheduler_events = {
 #             bootinfo.home_page = "gym_trainer_dashboard"
 #         else:
 #             bootinfo.home_page = "home"
+
+controller_hooks = {
+    "User": {
+        "after_save": "gym_mgmt.services.rest.handle_post_save_redirect"
+    }
+}
